@@ -223,6 +223,7 @@ module LVT_pluginIndices
    character*50, public,  parameter :: LVT_GIMMSMODIS_NDVIobsId = "GIMMS MODIS NDVI"
    character*50, public,  parameter :: LVT_GLDAS1obsId = "GLDAS1"
    character*50, public,  parameter :: LVT_GLDAS2obsId = "GLDAS2"
+   character*50, public,  parameter :: LVT_HydroSCSobsId = "HydroSCS"
 
    character*50, public,  parameter :: LVT_MERRA2obsId    = "MERRA2"
    character*50, public,  parameter :: LVT_MERRA2asmObsId = "MERRA2asm"

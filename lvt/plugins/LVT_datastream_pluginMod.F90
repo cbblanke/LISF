@@ -34,6 +34,7 @@
 !               Veg. Water Content (VWC) from SMAP SM dataset ! 
 !  19 Nov 2018  Mahdi Navari added suport to read SMAP_L3 brightness temperature
 !  10 Jan 2023  Mahdi Navari added suport for COAMPSout 
+!  22 Feb 2024  Clay Blankenship added support for HydroSCS
 !
 !EOP
 module LVT_datastream_pluginMod
@@ -128,6 +129,7 @@ contains
     use GCOMW_AMSR2L3snd_obsMod,only : GCOMW_AMSR2L3snd_obsinit
     use SMOPSsm_obsMod,         only : SMOPSsm_obsInit
     use ESACCIsm_obsMod,        only : ESACCIsm_obsInit
+    use HydroSCSobsMod,         only : HydroSCSobsinit
     use GIMMSAVHRR_NDVIobsMod,  only : GIMMSAVHRR_NDVIobsinit
     use GIMMSMODIS_NDVIobsMod,  only : GIMMSMODIS_NDVIobsinit
     use GLDAS1obsMod,           only : GLDAS1obsinit
@@ -241,6 +243,7 @@ contains
     external readGCOMW_AMSR2L3sndobs
     external readSMOPSsmobs
     external readESACCIsmobs
+    external readHydroSCSobs
     external readGLERLobs
     external readGLDAS1obs
     external readGLDAS2obs
@@ -490,6 +493,12 @@ contains
          ESACCIsm_obsinit)
     call registerobsread(trim(LVT_ESACCIsmobsId)//char(0),&
          readESACCIsmobs)
+
+    !CBB added HydroSCS
+    call registerobssetup(trim(LVT_HydroSCSobsId)//char(0), &
+         HydroSCSobsinit)
+    call registerobsread(trim(LVT_HydroSCSobsId)//char(0),&
+         readHydroSCSobs)
 
     call registerobssetup(trim(LVT_GIMMSAVHRR_NDVIobsId)//char(0), &
          GIMMSAVHRR_NDVIobsinit)
